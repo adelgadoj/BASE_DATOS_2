@@ -1,0 +1,41 @@
+<%@ Page Language="C#" %>
+
+    <!DOCTYPE html>
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+    <head runat="server">
+        <meta charset="utf-8" />
+        <title>LABORATORIO 2</title>
+    </head>
+
+    <body>
+        <h1>Registro de Alumnos:</h1>
+        <form id="form1" runat="server">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre"><br>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos"><br>
+            <label for="sexo">Sexo:</label>
+            <input type="radio" id="btn_masculino">Masculino
+            <input type="radio" id="btn_femenino">Femenino<br>
+            <label for="email">Email:</label>
+            <input type="text" id="email"><br>
+            <label for="direccion">Direccion:</label>
+            <input type="text" id="direccion"> Ciudad:
+            <select id="lista_ciudades">
+                <option value="0">Ninguna</Seleccione>
+                </option>
+                <option value="Apurimac">Apurimac</option>
+                <option value="Arequipa">Arequipa</option>
+                <option value="Lima">Lima</option>
+                <option value="Cusco">Cusco</option>
+            </select>
+            <br>
+            <label for="Requerimiento:">Requerimiento:</label><br>
+            <textarea id="requerimiento" id="" cols="30" rows="8"></textarea><br>
+            <input type="button" value="Limpiar">
+            <input type="button" value="Enviar">
+        </form>
+    </body>
+
+    </html>

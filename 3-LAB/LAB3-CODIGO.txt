@@ -1,0 +1,84 @@
+<%@ Page Language="C#" %>
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta charset="utf-8" />
+    <title>LABORATORIO 3</title>    
+</head>
+<body>
+    <h1>Registro de Alumnos:</h1>
+    <form id="form1" runat="server" method="post">   
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre"><br>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos"><br>
+        <label for="sexo">Sexo:</label>
+        <input type="radio" id="btn_masculino">Masculino
+        <input type="radio" id="btn_femenino">Femenino<br>
+        <label for="email">Email:</label>
+        <input type="text" id="email"><br>
+        <label for="direccion">Direccion:</label>
+        <input type="text" id="direccion"> Ciudad:
+            <select id="lista_ciudades">
+                <option value="0">Ninguna</Seleccione></option>
+                <option value="Apurimac">Apurimac</option>
+                <option value="Arequipa">Arequipa</option>
+                <option value="Lima">Lima</option>
+                <option value="Cusco">Cusco</option>
+            </select>
+        <br>
+        <label for="Requerimiento:">Requerimiento:</label><br>
+        <textarea id="requerimiento" id="" cols="30" rows="8"></textarea><br>
+        <asp:Button ID="Button1" runat="server" Text="Limpiar" OnClientClick="return limpiar_contenido();" />
+        <input type="button" onclick="validar_contenido()" value="Enviar">
+    </form>
+
+ <script>
+     function limpiar_contenido() {
+         document.getElementById("nombre").value = "vacio";
+         document.getElementById("apellidos").value = "vacio";
+         document.getElementById("btn_masculino").checked = false;
+         document.getElementById("btn_femenino").checked = false;
+         document.getElementById("email").value = "vacio";
+         document.getElementById("direccion").value = "vacio";
+         document.getElementById("lista_ciudades").value = 0;
+         document.getElementById("requerimiento").value = "vacio";
+         return false;
+     }
+
+     function validar_contenido() {
+         let nombre = document.getElementById("nombre").value;
+         if (nombre.length == 0 || !/^[a-zA-Z]+$/.test(nombre)) {
+             alert("Error en nombre");
+             return false;
+         }
+         let apellidos = document.getElementById("apellidos").value;
+         if (apellidos.length == 0 || !/^[a-zA-Z]+\s[a-zA-Z]+$/.test(apellidos)) {
+             alert("Error en apellidos");
+             return false;
+         }
+         let btn_masculino = document.getElementById("btn_masculino").checked;
+         let btn_femenino = document.getElementById("btn_femenino").checked;
+         if (btn_masculino == false && btn_femenino == false) {
+             alert("Sexo no indicado");
+             return false;
+         }
+
+         let email = document.getElementById("email").value;
+         if (email.length == 0 || !/^[a-zA-Z0-9]+@unsa.edu.pe$/.test(email)) {
+             alert("Email Incorrecto");
+             return false;
+         }
+
+         let ciudad = document.getElementById("lista_ciudades").value;
+         if (ciudad == 0) {
+             alert("Seleccionar una ciudad");
+             return false;
+         }
+         let fecha = document.getElementById("form1").innerHTML = Date();
+         alert("Registrado a las: " + fecha);
+     }
+ </script>
+</body>
+</html>
